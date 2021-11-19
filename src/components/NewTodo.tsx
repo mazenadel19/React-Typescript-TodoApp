@@ -1,5 +1,5 @@
 import { FC, useRef } from 'react'
-
+import styles from './NewTodo.module.css'
 interface Props {
 	onAddTodo: (a: string) => void
 }
@@ -21,9 +21,9 @@ export const NewTodo: FC<Props> = ({ onAddTodo }) => {
 	}
 
 	return (
-		<form onSubmit={submitHandler}>
-			<label htmlFor='enteredText'>Enter a todo:</label> <br />
-			<input type='text' id='enteredText' ref={inputRef} /> <br />
+		<form onSubmit={submitHandler} className={styles.form}>
+			<label htmlFor='enteredText'>Enter a todo:</label>
+			<input type='text' id='enteredText' ref={inputRef} />
 			<button type='submit'>Add</button>
 		</form>
 	)
