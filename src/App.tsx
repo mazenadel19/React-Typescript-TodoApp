@@ -12,14 +12,17 @@ function App() {
 
 	const addTodoHandler = (text: string) => {
 		const newTodo = new Todo(text)
-        setTodos(prevState => prevState.concat(newTodo)) //setting the state depending on previous state instance
+		setTodos(prevState => prevState.concat(newTodo)) //setting the state depending on previous state instance
+	}
 
+	const itemRemoveHandler = (todoId: string) => {
+		setTodos(prev => prev.filter(todo => todo.id !== todoId))
 	}
 
 	return (
 		<div className='App'>
 			<NewTodo onAddTodo={addTodoHandler} />
-			<Todos items={todos} />
+			<Todos items={todos} onItemRemoved={itemRemoveHandler} />
 		</div>
 	)
 }

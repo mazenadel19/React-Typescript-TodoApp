@@ -1,18 +1,23 @@
 import { FC } from 'react'
 import { Todo } from '../models/todos'
-import  TodoItem  from './TodoItem';
+import TodoItem from './TodoItem'
 import styles from './Todos.module.css'
 
-
-const Todos: FC<{ items: Todo[] }> = props => {
-	return (
-		<ul className={styles.todos}>
-			{props.items.map((item, i) => (
-				<TodoItem key={i} title={item.title} />
-			))}
-		</ul>
-	)
-}
+const Todos: FC<{ items: Todo[]; onItemRemoved: (todoId: string) => void }> =
+	props => {
+		return (
+			<ul className={styles.todos}>
+				{props.items.map((item) => (
+					<TodoItem
+                        key={item.id}
+                        id={item.id}
+						title={item.title}
+						onItemRemoved={props.onItemRemoved}
+					/>
+				))}
+			</ul>
+		)
+	}
 
 export default Todos
 
